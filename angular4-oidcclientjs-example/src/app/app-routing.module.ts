@@ -7,11 +7,16 @@ import { AuthService } from './services/auth.service';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 
 import { CallApiComponent } from './call-api/call-api.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     children: []
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'protected',

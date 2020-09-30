@@ -1,0 +1,10 @@
+<button (click)="begin()">begin</button>
+<br>
+
+
+<input type="text" placeholder="number" #phoneNumber>
+<button (click)="getOtp(phoneNumber.value)">otp</button>
+<br>
+
+<input type="text" placeholder="otp" #otp>
+<button (click)="reg(phoneNumber.value, otp.value)">reg</button>

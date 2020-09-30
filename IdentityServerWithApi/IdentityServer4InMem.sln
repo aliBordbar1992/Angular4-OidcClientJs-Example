@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4InMem", "IdentityServer4InMem.csproj", "{2BFA20F9-E391-4BC7-B654-B6061E91A5E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4", "..\..\IdentityServer4\src\IdentityServer4\src\IdentityServer4.csproj", "{890332E2-E499-458D-96D3-142101FDCEED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{2BFA20F9-E391-4BC7-B654-B6061E91A5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BFA20F9-E391-4BC7-B654-B6061E91A5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BFA20F9-E391-4BC7-B654-B6061E91A5E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890332E2-E499-458D-96D3-142101FDCEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890332E2-E499-458D-96D3-142101FDCEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890332E2-E499-458D-96D3-142101FDCEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890332E2-E499-458D-96D3-142101FDCEED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {691C26C9-2FF4-4540-9991-D34553BB1C3C}
 	EndGlobalSection
 EndGlobal

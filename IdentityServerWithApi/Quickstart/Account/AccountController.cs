@@ -77,7 +77,8 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
             // check if we are in the context of an authorization request
-            var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
+            string contextUrl = model.ReturnUrl.Replace("http://localhost:5555", "");
+            var context = await _interaction.GetAuthorizationContextAsync(contextUrl);
 
             // the user clicked the "cancel" button
             if (button != "login")
@@ -135,6 +136,8 @@ namespace IdentityServer4.Quickstart.UI
                         {
                             // if the client is PKCE then we assume it's native, so this change in how to
                             // return the response is for better UX for the end user.
+
+                            //return new ObjectResult(new { Success = true, ReturnUrl = contextUrl });
                             return View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
                         }
 

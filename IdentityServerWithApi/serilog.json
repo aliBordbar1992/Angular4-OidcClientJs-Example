@@ -1,0 +1,20 @@
+﻿{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+        "Microsoft.EntityFrameworkCore.Database.Connection": "Warning",
+        "Microsoft.EntityFrameworkCore.Query": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "[{Timestamp:HH:mm:ss}__{Level:u3}] {Message:lj}{NewLine}{Properties}{NewLine}{Exception}"
+        }
+      }
+    ]
+  }
+}

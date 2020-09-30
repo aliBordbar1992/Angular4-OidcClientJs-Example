@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using IdentityServer4.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using IdentityServer4.Models;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -14,9 +15,19 @@ namespace IdentityServer4InMem
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            //var corsBuilder = new CorsPolicyBuilder();
+            //corsBuilder.AllowAnyHeader();
+            //corsBuilder.AllowAnyMethod();
+            //corsBuilder.WithOrigins("http://localhost:4200", "https://localhost:5555"); // For anyone access.
+            //corsBuilder.AllowCredentials();
+
+            //services.AddCors(options => { options.AddPolicy("SiteCorsPolicy", corsBuilder.Build()); });
             services.AddMvc();
             
-            services.AddIdentityServer()
+            services.AddIdentityServer(options =>
+                {
+                    //options.UserInteraction.LoginUrl = "http://localhost:4200/login";
+                })
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(identityResources)
                 .AddInMemoryApiResources(apiResources)
@@ -34,7 +45,7 @@ namespace IdentityServer4InMem
         
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole();
+            //app.UseCors("SiteCorsPolicy");
             app.UseDeveloperExceptionPage();
 
             app.Map("/api", api =>
@@ -59,7 +70,12 @@ namespace IdentityServer4InMem
             app.UseIdentityServer();
             
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseRouting();
+            app.UseEndpoints(endpoint =>
+            {
+                endpoint.MapDefaultControllerRoute();
+            });
         }
         
         private readonly List<IdentityResource> identityResources = new List<IdentityResource>
@@ -77,7 +93,7 @@ namespace IdentityServer4InMem
         {
             new Client
             {
-                ClientId = "angular_spa",
+                ClientId = "AdminPanel",
                 ClientName = "Angular 4 Client",
                 AllowedGrantTypes = GrantTypes.Code,
                 RequirePkce = true,
