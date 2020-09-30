@@ -31,9 +31,19 @@ export class AuthService {
   startAuthentication(): Promise<void> {
     return this.manager.signinRedirect();
   }
-
   completeAuthentication(): Promise<void> {
     return this.manager.signinRedirectCallback().then(user => {
+      this.user = user;
+    });
+  }
+
+  
+  startSilent(): Promise<User>{
+    return this.manager.signinSilent();
+  }
+
+  completeSilent(): Promise<void> {
+    return this.manager.signinSilentCallback().then(user => {
       this.user = user;
     });
   }
@@ -44,9 +54,10 @@ export function getClientSettings(): UserManagerSettings {
     authority: 'http://localhost:5555/',
     client_id: 'AdminPanel',
     redirect_uri: 'http://localhost:4200/auth-callback',
+    silent_redirect_uri: 'http://localhost:4200/assets/silent-refresh.html',
     post_logout_redirect_uri: 'http://localhost:4200/',
     response_type: "code",
-    scope: "openid profile api1",
+    scope: "openid profile",
     filterProtocolClaims: true,
     loadUserInfo: true
   };

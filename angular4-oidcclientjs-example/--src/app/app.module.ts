@@ -8,6 +8,7 @@ import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { CallApiComponent } from './call-api/call-api.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ProtectedComponent,
     AuthCallbackComponent,
-    CallApiComponent
+    CallApiComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
